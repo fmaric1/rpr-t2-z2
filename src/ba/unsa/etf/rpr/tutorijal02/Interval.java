@@ -50,11 +50,11 @@ public class Interval {
             presjek.pocetna=this.pocetna;
             presjek.pripadaPocetna=this.pripadaPocetna;
         }
-        if(interval1.krajnja > this.pocetna ){
+        if(interval1.krajnja > this.pocetna && interval1.krajnja < this.krajnja ){
             presjek.krajnja = interval1.krajnja;
             presjek.pripadaKrajnja = interval1.pripadaKrajnja;
         }
-        else if(this.krajnja > interval1.pocetna ){
+        else if(this.krajnja > interval1.pocetna && this.krajnja < interval1.krajnja  ){
             presjek.krajnja = this.krajnja;
             presjek.pripadaKrajnja = this.pripadaKrajnja;
         }
@@ -86,6 +86,11 @@ public class Interval {
         return krajnja;
     }
 
+    @Override
+    public boolean equals(Object o){
+        Interval i1 = (Interval) o;
+        return i1.pocetna==this.pocetna && i1.krajnja==this.krajnja && i1.pripadaPocetna==this.pripadaPocetna && i1.pripadaKrajnja==this.pripadaKrajnja;
+    }
 
 
 }
